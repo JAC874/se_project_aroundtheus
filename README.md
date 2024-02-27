@@ -16,4 +16,4 @@ This is the third project of the Software Engineering program at TripleTen. It w
 
 Plans to use object fit and auto fit to streamline css.
 
-Will include video description and link after initial review.
+Will include video description and screenshots along with links after initial review.
