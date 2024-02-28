@@ -93,9 +93,6 @@
     font-size: 22px;
     margin: 0;
     max-width: calc(100vh - 124px);
-    white-space: nowrap;
-    overflow: hidden;
-    color: white;
   }
 
   .profile__edit-button {
@@ -136,10 +133,6 @@
     flex-wrap: wrap;
     grid-gap: 14px 10px;
     max-width: 282px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    color: white;
   }
 
   .profile__title {
