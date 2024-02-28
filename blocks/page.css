@@ -32,12 +32,6 @@
   }
 }
 
-@media screen and (max-width: 680px) {
-  .page__content {
-    max-width: calc(100% - 40px);
-  }
-}
-
 @media screen and (max-width: 320px) {
   .page__content {
     max-width: 320px;
