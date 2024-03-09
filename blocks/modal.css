@@ -1,0 +1,146 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  display: none;
+  padding: 0 19px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  color: black;
+  font-family: "Inter", Arial, sans-serif;
+  line-height: auto;
+  font-weight: 900;
+}
+
+.modal_opened {
+  display: flex;
+}
+
+.modal__container {
+  position: relative;
+  background-color: #fff;
+  margin: auto;
+  padding: 36px;
+  border-radius: 10px;
+  height: 330px;
+  min-width: 430px;
+  box-sizing: border-box;
+  margin: 195px auto auto;
+}
+
+.modal__close {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  background-image: url(../images/close.svg);
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.modal__close:hover {
+  opacity: 60%;
+}
+
+.modal__profile-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__heading {
+  margin: 0;
+  font-size: 24px;
+}
+
+.modal__input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  line-height: 17px;
+  font-size: 14px;
+  font-weight: 400;
+  padding-bottom: 14px;
+}
+
+.modal__form-title {
+  margin: 54px 0 30px 0;
+}
+
+.modal__form-description {
+  margin-bottom: 47px;
+}
+
+.modal__edit-save-button {
+  background-color: #000;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 13px 125px 18px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.modal__edit-save-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (max-width: 540px) {
+  .modal__container {
+    min-width: 282px;
+    margin: 123px auto auto;
+  }
+
+  .modal__close {
+    bottom: calc(100% + 20px);
+    left: calc(100% + -20px);
+    width: 26px;
+    height: 26px;
+  }
+
+  .modal__form-title .modal__input_type_title {
+    margin: 75px 0 30px 0;
+  }
+
+  .modal__form-description .modal__input_type_text {
+    margin-bottom: 45px;
+  }
+
+  .modal__edit-save-button {
+    font-size: 14px;
+    line-height: 27px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .modal__container {
+    padding: 25px 22px;
+  }
+
+  .modal__heading {
+    font-size: 18px;
+  }
+
+  .modal__edit-save-button {
+    padding: 14px 100px;
+  }
+
+  .modal__form-title,
+  .modal__input_type_title {
+    margin: 75px 0 30px 0;
+  }
+
+  .modal__form-description,
+  .modal__input_type_text {
+    margin-bottom: 45px;
+  }
+}
