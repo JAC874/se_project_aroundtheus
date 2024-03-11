@@ -61,7 +61,7 @@ function handleProfileEditSubmit(e) {
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  profileDescriptionInput.value = profileDescription.textContent.trim();
   profileEditModal.classList.add("modal_opened");
 });
 
@@ -79,11 +79,6 @@ function getCardElement(cardData) {
   cardTitleEl.textContent = cardData.name;
   return cardElement;
 }
-
-// for (let i = 0; i < initialCards.length; i++) {
-//   let card = getCardElement(initialCards[i]);
-//   cardListEl.append(cardElement);
-// }
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
