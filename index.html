@@ -41,6 +41,7 @@
             aria-label="add"
             type="button"
             class="profile__add-button"
+            id="add-button"
           ></button>
         </section>
         <section class="cards">
@@ -55,7 +56,7 @@
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="profile-close-button"></button>
-        <form class="modal__profile-form">
+        <form class="modal__form" id="profile-form">
           <h2 class="modal__heading">Edit Profile</h2>
           <input
             class="modal__input modal__form-title"
@@ -78,8 +79,47 @@
       </div>
     </div>
 
+    <div class="modal" id="add-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="add-close-button"></button>
+        <form class="modal__form" id="add-card-form">
+          <h2 class="modal__heading">New place</h2>
+          <input
+            class="modal__input modal__form-title"
+            type="text"
+            name="title"
+            id="profile-title-input"
+            placeholder="Title"
+            required=""
+          />
+          <input
+            class="modal__input modal__form-description"
+            type="text"
+            name="link"
+            id="profile-description-input"
+            placeholder="Image Link"
+            required=""
+          />
+          <button type="submit" class="modal__edit-save-button">Create</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal preview__modal" id="preview-image-modal">
+      <div class="modal__preview">
+        <button class="modal__close" id="preview-close-button"></button>
+        <img class="modal__preview-image" src="" alt="" />
+        <p class="modal__preview-caption"></p>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
+        <button
+          aria-label="delete"
+          type="button"
+          class="card__delete-button"
+        ></button>
         <img src="" class="card__image" alt="" />
         <div class="card__description">
           <h2 class="card__title"></h2>

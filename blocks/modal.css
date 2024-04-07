@@ -5,18 +5,23 @@
   bottom: 0;
   right: 0;
   z-index: 999;
-  display: none;
+  display: flex;
   padding: 0 19px;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
+  background-color: rgba(0, 0, 0, .5);
   color: black;
   font-family: "Inter", Arial, sans-serif;
   line-height: auto;
   font-weight: 900;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 .modal_opened {
   display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .modal__container {
@@ -55,7 +60,7 @@
   font-size: 24px;
 }
 
-.modal__profile-form {
+.modal__form {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -87,6 +92,34 @@
 .modal__edit-save-button:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+.modal__preview-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.modal__preview {
+  margin: auto;
+  background-color: rgba(0, 0, 0, 1);
+  position: relative;
+  border-radius: 10px;
+  max-width: 75vw;
+  max-height: 75vh;
+  display: flex;
+}
+
+.modal__preview-caption {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 10px);
+  color: white;
+  margin: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.5px;
+}
+
 
 @media screen and (max-width: 540px) {
   .modal__container {
