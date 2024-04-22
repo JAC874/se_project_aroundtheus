@@ -62,13 +62,13 @@ const previewCloseButton = document.querySelector("#preview-close-button");
 /*                                  FUNCTIONS                                 */
 /* -------------------------------------------------------------------------- */
 
-function openPopup(modal) {
-  modal.classList.add("modal_opened");
-}
+// function openPopup(modal) {
+//   modal.classList.add("modal_opened");
+// }
 
-function closePopup(modal) {
-  modal.classList.remove("modal_opened");
-}
+// function closePopup(modal) {
+//   modal.classList.remove("modal_opened");
+// }
 
 /* -------------------------------------------------------------------------- */
 /*                                  FUNCTIONS                                 */
@@ -78,7 +78,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup(profileEditModal);
+  closeModal(profileEditModal);
 }
 
 function handleAddCardSubmit(e) {
@@ -90,7 +90,7 @@ function handleAddCardSubmit(e) {
     link,
   });
   renderCard(cardView, cardListEl);
-  closePopup(addCardModal);
+  closeModal(addCardModal);
   e.target.reset();
 }
 
@@ -133,14 +133,14 @@ function getCardView(cardData) {
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
-  openPopup(profileEditModal);
+  openModal(profileEditModal);
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 addCardButton.addEventListener("click", () => {
-  openPopup(addCardModal);
+  openModal(addCardModal);
 });
 
 initialCards.forEach(function (cardData) {
@@ -151,7 +151,7 @@ initialCards.forEach(function (cardData) {
 const closeButtons = document.querySelectorAll(".modal__close");
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
-  button.addEventListener("click", () => closePopup(popup));
+  button.addEventListener("click", () => closeModal(popup));
 });
 
 function closeModalOverlay(evt) {
