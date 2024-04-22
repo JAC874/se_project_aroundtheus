@@ -100,11 +100,14 @@
 
 .modal__edit-save-button_disabled {
   opacity: 0.2;
+  cursor: default;
 }
 
-.modal__edit-save-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+.modal__edit-save-button:hover:not(:disabled) {
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  opacity: 0.8;
 }
+
 
 .modal__preview-image {
   max-width: 100%;

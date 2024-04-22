@@ -154,25 +154,27 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closePopup(popup));
 });
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    const openModal = document.querySelector(".modal_opened");
-    if (openModal) {
-      closePopup(openModal);
-    }
+function closeModalOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closeModal(evt.currentTarget);
   }
-});
+}
 
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("modal_opened")) {
-    closePopup(e.target);
+function closeModalEscape(evt) {
+  if (evt.key === "Escape") {
+    const modalOpened = document.querySelector(".modal_opened");
+    closeModal(modalOpened);
   }
-});
+}
 
-document.querySelectorAll(".modal").forEach((modal) => {
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closePopup(modal);
-    }
-  });
-});
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalEscape);
+  modal.addEventListener("mousedown", closeModalOverlay);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalEscape);
+  modal.removeEventListener("mousedown", closeModalOverlay);
+}
