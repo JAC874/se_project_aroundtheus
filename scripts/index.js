@@ -125,6 +125,7 @@ function getCardView(cardData) {
 
   return cardElement;
 }
+
 /* -------------------------------------------------------------------------- */
 /*                               EVENT LISTENERS                              */
 /* -------------------------------------------------------------------------- */
@@ -151,4 +152,27 @@ const closeButtons = document.querySelectorAll(".modal__close");
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
   button.addEventListener("click", () => closePopup(popup));
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    const openModal = document.querySelector(".modal_opened");
+    if (openModal) {
+      closePopup(openModal);
+    }
+  }
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal_opened")) {
+    closePopup(e.target);
+  }
+});
+
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closePopup(modal);
+    }
+  });
 });
