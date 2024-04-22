@@ -120,7 +120,7 @@ function getCardView(cardData) {
     previewImageElement.src = cardData.link;
     previewImageElement.alt = cardData.name;
     previewCaption.textContent = cardTitleEl.textContent;
-    openPopup(previewImageModal);
+    openModal(previewImageModal);
   });
 
   return cardElement;
