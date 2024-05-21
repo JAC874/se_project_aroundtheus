@@ -34,7 +34,7 @@ export default class FormValidator {
   }
 
   _hasInvalidInput(inputList) {
-    return !inputList.every((inputEl) => inputEl.validity.valid);
+    return inputList.every((inputEl) => !inputEl.validity.valid);
   }
 
   disableButton() {
