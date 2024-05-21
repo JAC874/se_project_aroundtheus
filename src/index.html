@@ -12,16 +12,13 @@
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
-        <img
-          src="./images/AroundTheUSLogo.svg"
-          alt="Around the U.S. logo"
-          class="header__logo"
-        />
+        <img src=<%=require('./images/AroundTheUSLogo.svg')%> alt="Around the
+        U.S. logo" class="header__logo" />
       </header>
       <main class="content page__section">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg')%>"
             class="profile__image"
             alt="Avatar"
           />
@@ -156,7 +153,5 @@
         </div>
       </li>
     </template>
-
-    <script src="./pages/index.js" type="module"></script>
   </body>
 </html>
