@@ -13,10 +13,7 @@ export default class Card {
       this._handleDeleteCard.bind(this)
     );
     this._cardImageEl.addEventListener("click", () => {
-      this._handleImageClick({
-        name: this._name,
-        link: this._link,
-      });
+      this._handleImageClick(this._name, this._link);
     });
   }
 
@@ -39,7 +36,7 @@ export default class Card {
     this._cardImageEl = this._cardElement.querySelector(".card__image");
     this._cardTitleEl = this._cardElement.querySelector(".card__title");
     this._cardImageEl.src = this._link;
-    this._cardImageEl.alt = `${this._name} Image`;
+    this._cardImageEl.alt = this._name;
     this._cardTitleEl.textContent = this._name;
     this._setEventListeners();
     return this._cardElement;
