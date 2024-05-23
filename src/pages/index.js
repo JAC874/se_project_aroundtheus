@@ -53,7 +53,7 @@ addCardForm.setEventListeners();
 // Add event listener for the add card button
 constants.addCardButton.addEventListener("click", () => {
   addCardForm.open();
-  addCardValidator.resetValidation();
+  addCardValidator._disableButton();
 });
 
 // Initialize the card section and render initial cards
