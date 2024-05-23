@@ -8,10 +8,6 @@ export default class PopupWithForm extends Popup {
     this._setEventListeners();
   }
 
-  open() {
-    super.open();
-  }
-
   _getInputValues() {
     const inputList = this._popupForm.querySelectorAll(".modal__input");
     const inputItems = {};

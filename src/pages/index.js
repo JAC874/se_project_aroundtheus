@@ -5,7 +5,7 @@ import * as constants from "../utils/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import "../pages/index.css";
+import "./index.css";
 
 // Initialize the popup for image preview
 const cardPreview = new PopupWithImage("#preview-image-modal");
