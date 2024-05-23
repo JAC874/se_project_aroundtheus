@@ -1,7 +1,10 @@
+import { cardListEl } from "../utils/constants";
+
 export default class Section {
-  constructor({ renderer }, container) {
+  constructor({ renderer }, containerSelector) {
     this._renderer = renderer;
-    this._container = document.querySelector(".cards__list");
+    // this._containerSelector = ".cardListEl";
+    this._container = document.querySelector(containerSelector);
   }
 
   renderItems(items) {

@@ -52,7 +52,7 @@ export const profileDescriptionInput = document.querySelector(
 );
 export const profileEditForm = document.forms["profile-form"];
 
-export const cardListEl = document.querySelector(".cards__list");
+export const cardListEl = ".cards__list";
 
 export const addCardModal = document.querySelector("#add-card-modal");
 export const addCardButton = document.querySelector("#add-button");
