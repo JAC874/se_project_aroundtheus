@@ -1,19 +1,19 @@
-import { cardListEl } from "../utils/constants";
+// import { cardListEl } from "../utils/constants";
 
 export default class Section {
-  constructor({ renderer }, containerSelector) {
+  constructor({ items, renderer }, containerSelector) {
     this._renderer = renderer;
-    // this._containerSelector = ".cardListEl";
+    this._items = items;
     this._container = document.querySelector(containerSelector);
   }
 
-  renderItems(items) {
-    items.forEach((item) => {
+  renderItems() {
+    this._items.reverse().forEach((item) => {
       this._renderer(item);
     });
   }
 
-  addItem(element) {
-    this._container.prepend(element);
+  addItem(item) {
+    this._container.prepend(item);
   }
 }

@@ -17,4 +17,5 @@ This is the third project of the Software Engineering program at TripleTen. It w
 Plans to use object fit and auto fit to streamline css.
 
 [Link to GitHub Repo] (https://jac874.github.io/se_project_aroundtheus/)
+
 [Link to video description of project] (https://drive.google.com/file/d/1J4OIkdWTE70WISdCUtON3PSPM2RSrpUa/view?usp=sharing)

@@ -97,7 +97,7 @@
             <input
               class="modal__input modal__form-title"
               type="text"
-              name="title"
+              name="name"
               id="card-title-input"
               placeholder="Title"
               minlength="1"
@@ -129,6 +129,20 @@
         <button class="modal__close" id="preview-close-button"></button>
         <img class="modal__preview-image" src="" alt="" />
         <p class="modal__preview-caption"></p>
+      </div>
+    </div>
+
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container">
+        <button
+          id="delete-card-close-button"
+          class="modal__close"
+          type="button"
+        ></button>
+        <p class="modal__heading">Are you sure?</p>
+        <form class="modal__form" id="delete-card-form">
+          <button class="modal__save" type="submit">Yes</button>
+        </form>
       </div>
     </div>
 
