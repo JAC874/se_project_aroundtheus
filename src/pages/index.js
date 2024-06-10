@@ -13,10 +13,30 @@ import Api from "../components/Api.js";
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "9a777070-bbf5-4087-b884-1d339f3ca3e4",
+    authorization: "73b28af1-3d27-47c6-87e4-d9eade98f6bf",
     "content-type": "application/json",
   },
 });
+//-------FORM VALIDATION-----//
+
+// Initialize form validators
+const profileEditValidator = new FormValidator(
+  constants.config,
+  constants.profileEditForm
+);
+const addCardValidator = new FormValidator(
+  constants.config,
+  constants.addCardModal
+);
+
+const editAvatarFormValidator = new FormValidator(
+  constants.config,
+  constants.editAvatarForm
+);
+
+editAvatarFormValidator.enableValidation();
+profileEditValidator.enableValidation();
+addCardValidator.enableValidation();
 
 let cardSection;
 api
@@ -64,7 +84,6 @@ function createCard(cardData) {
 
 // ADD NEW CARD FORM
 function handleAddCardFormSubmit(data) {
-  const cardData = { name: data.name, link: data.link };
   api
     .addCard(data.name, data.link)
     .then((data) => {
@@ -72,7 +91,8 @@ function handleAddCardFormSubmit(data) {
       cardSection.addItem(cardElement);
       addCardForm.close();
       addCardForm.reset();
-      // addCardValidator.handleDisableButton();
+      addCardValidator._disableButton();
+      addCardForm.close();
     })
     .catch((error) => {
       console.error("Error adding card:", error);
@@ -98,13 +118,6 @@ cardPreview.setEventListeners();
 function handleImageClick(name, link) {
   cardPreview.open({ name, link });
 }
-
-//------DELETING CARDS-----//
-// const profileEditPopup = new PopupWithForm(
-//   "#profile-edit-modal",
-//   handleProfileEditSubmit
-// );
-// profileEditPopup.setEventListeners();
 
 const deleteCardPopup = new PopupWithForm("#delete-card-modal", () => {
   api
@@ -148,41 +161,70 @@ function handleLikeButton(likeButton, likedStatus, cardID) {
 }
 //----------USER INFO------//
 
-// LOAD USER INFO
-const userInformation = new UserInfo({
-  name: ".profile__title",
-  description: ".profile__description",
-});
+const userInfo = new UserInfo(
+  ".profile__title",
+  ".profile__description",
+  ".profile__image"
+);
+
+api
+  .getUser()
+  .then((inputValues) => {
+    userInfo.setUserInfo(inputValues.name, inputValues.about);
+    userInfo.setAvatar(inputValues.avatar);
+  })
+  .catch((err) => console.error("Error fetching user data:", err));
+
+function handleProfileEditSubmit(inputValues) {
+  api
+    .editProfile(inputValues.name, inputValues.about)
+    .then((data) => {
+      userInfo.setUserInfo(data.name, data.about);
+      profileEditForm.close(); // Close the form after submission
+    })
+    .catch((err) => console.error("Error editing profile:", err));
+}
 
 // EDIT USER FORM
-const profileEditForm = new PopupWithForm("#profile-edit-modal", (data) => {
-  userInformation.setUserInfo({
-    title: data.title,
-    description: data.description,
-  });
-});
+const profileEditForm = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
 profileEditForm.setEventListeners();
 
 // EVENT LISTENER FOR PROFILE EDIT
 constants.profileEditButton.addEventListener("click", () => {
-  profileEditValidator.resetValidation();
-  const userData = userInformation.getUserInfo();
-  constants.profileTitleInput.value = userData.title;
-  constants.profileDescriptionInput.value = userData.description.trim();
+  const data = userInfo.getUserInfo();
+  constants.profileTitleInput.value = data.name;
+  constants.profileDescriptionInput.value = data.about;
   profileEditForm.open();
 });
 
-//-------FORM VALIDATION-----//
+//AVATAR UPDATE
 
-// Initialize form validators
-const profileEditValidator = new FormValidator(
-  constants.config,
-  constants.profileEditForm
-);
-const addCardValidator = new FormValidator(
-  constants.config,
-  constants.addCardModal
-);
+const profileAvatar = document.querySelector(".profile__image-pencil");
 
-profileEditValidator.enableValidation();
-addCardValidator.enableValidation();
+profileAvatar.addEventListener("click", (e) => {
+  if (e.target === e.currentTarget) {
+    avatarEditPopup.open();
+  }
+});
+
+const avatarEditPopup = new PopupWithForm(
+  "#edit-avatar-modal",
+  handleAvatarSubmit
+);
+avatarEditPopup.setEventListeners();
+
+function handleAvatarSubmit({ link }) {
+  api
+    .updateAvatar(link)
+    .then((res) => {
+      console.log("Avatar updated successfully:", res);
+      userInfo.setAvatar(link);
+    })
+    .catch((err) => {
+      console.error("Error occurred while updating avatar:", err);
+    });
+  avatarEditPopup.close();
+}

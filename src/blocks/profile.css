@@ -75,6 +75,25 @@
   margin-right: 24px;
 }
 
+.profile__image-overlay {
+  position: absolute;
+  visibility: hidden;
+  height: 26px;
+  width: 26px;
+  left: 45px;
+  bottom: 50px;
+}
+
+.profile__image-container:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.profile__image-container:hover .profile__image-overlay {
+  visibility: visible;
+  opacity: 100%;
+}
+
 @media screen and (max-width: 770px) {
   .profile {
     padding: 42px 19px 0 19px;

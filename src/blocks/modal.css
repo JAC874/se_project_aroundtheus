@@ -18,7 +18,7 @@
 }
 
 .modal_opened {
-  display: flex;
+  /* display: flex; */
   visibility: visible;
   opacity: 1;
   transition: visibility 0s, opacity 0.5s linear;
@@ -30,7 +30,7 @@
   margin: auto;
   padding: 36px;
   border-radius: 10px;
-  height: 330px;
+  max-height: 330px;
   min-width: 430px;
   box-sizing: border-box;
   margin: 195px auto auto;

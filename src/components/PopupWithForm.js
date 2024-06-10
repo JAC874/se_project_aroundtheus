@@ -18,6 +18,14 @@ export default class PopupWithForm extends Popup {
     return inputValues;
   }
 
+  _renderLoading(isLoading) {
+    if (isLoading) {
+      this._submitButton.textContent = "Saving...";
+    } else {
+      this._submitButton.textContent = this._defaultSubmitButtonText;
+    }
+  }
+
   reset() {
     this._popupForm.reset();
   }
