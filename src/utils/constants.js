@@ -34,12 +34,6 @@ export const config = {
   errorClass: "modal__error_visible",
 };
 
-// export const selectors = {
-//   popupForm: "modal__form",
-//   previewImage: "modal__preview-image",
-//   addCardModal: "#add-card-modal",
-// };
-
 export const profileEditModal = document.querySelector("#profile-edit-modal");
 export const profileEditButton = document.querySelector("#profile-edit-button");
 export const profileTitle = document.querySelector("#profile-title");

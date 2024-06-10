@@ -7,8 +7,6 @@ export default class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._form = formEl;
-    // this._inputEls = [...this._formEl.querySelectorAll(this._inputSelector)];
-    // this._submitButton = this._formEl.querySelector(this._submitButtonSelector);
   }
 
   _showInputError(inputEl) {
@@ -70,10 +68,10 @@ export default class FormValidator {
   enableValidation() {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault(evt);
-      this._disableButton();
     });
 
     this._setEventListeners();
+    this._toggleButtonState();
   }
 
   resetValidation() {

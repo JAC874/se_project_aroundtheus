@@ -53,22 +53,8 @@ api
       ".cards__list"
     );
     cardSection.renderItems();
-    console.log(cardData);
   })
   .catch((err) => console.error(err));
-
-// CREATE CARD SECTION AND RENDER CARDS
-// const cardSection = new Section(
-//   {
-//     renderer: (item) => {
-//       const cardElement = createCard(item);
-//       cardSection.addItem(cardElement);
-//     },
-//   },
-//   constants.cardListEl
-// );
-
-// cardSection.renderItems(constants.initialCards);
 
 function createCard(cardData) {
   const card = new Card(
@@ -84,6 +70,7 @@ function createCard(cardData) {
 
 // ADD NEW CARD FORM
 function handleAddCardFormSubmit(data) {
+  addCardForm.renderLoading(true);
   api
     .addCard(data.name, data.link)
     .then((data) => {
@@ -96,6 +83,9 @@ function handleAddCardFormSubmit(data) {
     })
     .catch((error) => {
       console.error("Error adding card:", error);
+    })
+    .finally(() => {
+      addCardForm.renderLoading(false);
     });
 }
 
@@ -146,7 +136,7 @@ function handleLikeButton(likeButton, likedStatus, cardID) {
       .removeLike(cardID)
       .then(() => {
         likeButton.classList.remove("card__like-button_active");
-        return false; // Return new liked status
+        return false;
       })
       .catch((error) => console.error("Error removing like:", error));
   } else {
@@ -154,7 +144,7 @@ function handleLikeButton(likeButton, likedStatus, cardID) {
       .addLike(cardID)
       .then(() => {
         likeButton.classList.add("card__like-button_active");
-        return true; // Return new liked status
+        return true;
       })
       .catch((error) => console.error("Error adding like:", error));
   }
@@ -176,13 +166,17 @@ api
   .catch((err) => console.error("Error fetching user data:", err));
 
 function handleProfileEditSubmit(inputValues) {
+  profileEditForm.renderLoading(true);
   api
     .editProfile(inputValues.name, inputValues.about)
     .then((data) => {
       userInfo.setUserInfo(data.name, data.about);
-      profileEditForm.close(); // Close the form after submission
+      profileEditForm.close();
     })
-    .catch((err) => console.error("Error editing profile:", err));
+    .catch((err) => console.error("Error editing profile:", err))
+    .finally(() => {
+      profileEditForm.renderLoading(false);
+    });
 }
 
 // EDIT USER FORM
@@ -190,6 +184,7 @@ const profileEditForm = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
 );
+
 profileEditForm.setEventListeners();
 
 // EVENT LISTENER FOR PROFILE EDIT
@@ -217,14 +212,19 @@ const avatarEditPopup = new PopupWithForm(
 avatarEditPopup.setEventListeners();
 
 function handleAvatarSubmit({ link }) {
+  avatarEditPopup.renderLoading(true);
   api
     .updateAvatar(link)
     .then((res) => {
       console.log("Avatar updated successfully:", res);
       userInfo.setAvatar(link);
+      avatarEditPopup.close();
+      avatarEditPopup.reset();
     })
     .catch((err) => {
       console.error("Error occurred while updating avatar:", err);
+    })
+    .finally(() => {
+      avatarEditPopup.renderLoading(false);
     });
-  avatarEditPopup.close();
 }

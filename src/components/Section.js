@@ -1,5 +1,3 @@
-// import { cardListEl } from "../utils/constants";
-
 export default class Section {
   constructor({ items, renderer }, containerSelector) {
     this._renderer = renderer;

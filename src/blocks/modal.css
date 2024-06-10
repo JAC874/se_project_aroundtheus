@@ -18,7 +18,6 @@
 }
 
 .modal_opened {
-  /* display: flex; */
   visibility: visible;
   opacity: 1;
   transition: visibility 0s, opacity 0.5s linear;
@@ -105,7 +104,6 @@
 }
 
 .modal__edit-save-button:hover:not(:disabled) {
-  /* background-color: rgba(0, 0, 0, 0.8); */
   opacity: 0.8;
 }
 
