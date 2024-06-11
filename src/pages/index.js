@@ -103,25 +103,6 @@ const addCardForm = new PopupWithForm(
 );
 addCardForm.setEventListeners();
 
-// function handleAddCardFormSubmit(data) {
-//   addCardForm.renderLoading(true);
-//   api
-//     .addCard(data.name, data.link)
-//     .then((data) => {
-//       const cardElement = createCard(data);
-//       cardSection.addItem(cardElement);
-//       addCardForm.close();
-//       addCardForm.reset();
-//       formValidators[`add-card-form`].resetValidation();
-//     })
-//     .catch((error) => {
-//       console.error("Error adding card:", error);
-//     })
-//     .finally(() => {
-//       addCardForm.renderLoading(false);
-//     });
-// }
-
 // EVENT LISTENER FOR NEW CARD BUTTON
 constants.addCardButton.addEventListener("click", () => {
   addCardForm.open();
@@ -135,24 +116,7 @@ function handleImageClick(name, link) {
   cardPreview.open({ name, link });
 }
 
-// const deleteCardPopup = new PopupWithForm("#delete-card-modal", () => {
-//   api
-//     .deleteRequest(currentCardID)
-//     .then(() => {
-//       currentCardElement.remove();
-//       deleteCardPopup.close();
-//     })
-//     .catch((error) => console.error("Error deleting card:", error));
-// });
-
-// let currentCardID = null;
-// let currentCardElement = null;
-
-// function handleDeleteCard(cardID, cardElement) {
-//   currentCardID = cardID;
-//   currentCardElement = cardElement;
-//   deleteCardPopup.open();
-// }
+//----DELETE CARD-----//
 
 const deleteCardPopup = new PopupWithForm(
   "#delete-card-modal",
@@ -178,7 +142,7 @@ function handleDeleteCardSubmit() {
   handleSubmit(makeRequest, deleteCardPopup, "Deleting...");
 }
 
-//-----HANDLE LIKES----/
+//-----HANDLE LIKES----//
 
 function handleLikeButton(cardID, isLiked) {
   if (isLiked) {
@@ -201,28 +165,6 @@ const userInfo = new UserInfo(
   ".profile__description",
   ".profile__image"
 );
-
-// api
-//   .getUser()
-//   .then((inputValues) => {
-//     userInfo.setUserInfo(inputValues.name, inputValues.about);
-//     userInfo.setAvatar(inputValues.avatar);
-//   })
-//   .catch((err) => console.error("Error fetching user data:", err));
-
-// function handleProfileEditSubmit(inputValues) {
-//   profileEditForm.renderLoading(true);
-//   api
-//     .editProfile(inputValues.name, inputValues.about)
-//     .then((data) => {
-//       userInfo.setUserInfo(data.name, data.about);
-//       profileEditForm.close();
-//     })
-//     .catch((err) => console.error("Error editing profile:", err))
-//     .finally(() => {
-//       profileEditForm.renderLoading(false);
-//     });
-// }
 
 api
   .getUser()
@@ -247,6 +189,8 @@ function handleProfileEditSubmit(data) {
 
   handleSubmit(makeRequest, profileEditForm);
 }
+
+//-----PROFILE EDIT FORM-----//
 
 const profileEditForm = new PopupWithForm(
   "#profile-edit-modal",
@@ -291,21 +235,3 @@ function handleAvatarSubmit({ link }) {
 
   handleSubmit(makeRequest, avatarEditPopup);
 }
-
-// function handleAvatarSubmit({ link }) {
-//   avatarEditPopup.renderLoading(true);
-//   api
-//     .updateAvatar(link)
-//     .then((res) => {
-//       userInfo.setAvatar(link);
-//       avatarEditPopup.close();
-//       avatarEditPopup.reset();
-//       formValidators[`edit-avatar-form`].resetValidation();
-//     })
-//     .catch((err) => {
-//       console.error("Error occurred while updating avatar:", err);
-//     })
-//     .finally(() => {
-//       avatarEditPopup.renderLoading(false);
-//     });
-// }
