@@ -67,6 +67,13 @@
   cursor: pointer;
 }
 
+.profile__image-container {
+  position: relative;
+  height: 120px;
+  width: 120px;
+  margin-right: 24px;
+}
+
 .profile__image {
   height: 120px;
   width: 120px;
@@ -77,11 +84,12 @@
 
 .profile__image-overlay {
   position: absolute;
-  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 26px;
   width: 26px;
-  left: 45px;
-  bottom: 50px;
+  visibility: hidden;
 }
 
 .profile__image-container:hover {
@@ -134,6 +142,10 @@
   .profile {
     flex-direction: column;
     padding: 42px 19px 0 19px;
+  }
+
+  .profile__image-container {
+    margin: 0 auto 30px auto;
   }
 
   .profile__image {

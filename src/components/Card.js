@@ -27,15 +27,7 @@ export default class Card {
 
     this._likeButton.addEventListener("click", (e) => {
       e.preventDefault();
-
-      if (e.target === this._likeButton) {
-        this._handleLikeButton(this._likeButton, this.isLiked, this._cardID)
-          .then((isLiked) => {
-            this.isLiked = isLiked;
-            this._updateLikeButton();
-          })
-          .catch((error) => console.error("Error toggling like:", error));
-      }
+      this._toggleLike();
     });
 
     this._deleteButton.addEventListener("click", () => {
@@ -45,6 +37,15 @@ export default class Card {
     this._cardImageEl.addEventListener("click", () => {
       this._handleImageClick(this.name, this.link);
     });
+  }
+
+  _toggleLike() {
+    this._handleLikeButton(this._cardID, this.isLiked)
+      .then((isLiked) => {
+        this.isLiked = isLiked;
+        this._updateLikeButton();
+      })
+      .catch((error) => console.error("Error toggling like:", error));
   }
 
   _updateLikeButton() {

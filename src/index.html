@@ -61,7 +61,7 @@
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="profile-close-button"></button>
-        <form class="modal__form" id="profile-form">
+        <form class="modal__form" id="profile-form" name="profile-edit-form">
           <h2 class="modal__heading">Edit Profile</h2>
           <label class="modal__error_wrapper">
             <input
@@ -100,7 +100,7 @@
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button class="modal__close" id="add-close-button"></button>
-        <form class="modal__form" id="add-card-form">
+        <form class="modal__form" id="add-card-form" name="add-card-form">
           <h2 class="modal__heading">New place</h2>
           <label class="modal__error_wrapper">
             <input
@@ -164,7 +164,11 @@
           type="button"
         ></button>
         <p class="modal__heading">Change profile picture</p>
-        <form class="modal__form" id="edit-avatar-modal-form">
+        <form
+          class="modal__form"
+          id="edit-avatar-modal-form"
+          name="edit-avatar-form"
+        >
           <label class="modal__error_wrapper">
             <input
               class="modal__input modal__form-description"
